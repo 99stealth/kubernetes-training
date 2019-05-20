@@ -11,7 +11,7 @@ kubectl create -f ops.yaml
 ```
 kubectl get deployments
 ```
-⋅⋅⋅And check pod is created
+...And check pod is created
 ```
 kubectl get pods
 ```
