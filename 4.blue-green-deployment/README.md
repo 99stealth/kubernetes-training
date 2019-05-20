@@ -1,21 +1,21 @@
 ## Blue/Green deployment
-Persistance storage can help us with a blue/green deployment. In order to create them use next command
+1. Persistance storage can help us with a blue/green deployment. In order to create them use next command
 ```
 gcloud compute disks create webcontent-blue webcontent-green --zone europe-west1-d --size 1GB
 ```
-Create temporary container with NGINX
+2. Create temporary container with NGINX
 ```
 kubectl create -f ops.yaml
 ```
-Check deployment
+3. Check deployment
 ```
 kubectl get deployments
 ```
-Check pod is created
+And check pod is created
 ```
 kubectl get pods
 ```
-Connect to pod you got in output
+4. Connect to pod you got in output
 ```
 kubectl exec -it ops-xxxxxxxxxx-xxxxx -- bash
 ```
@@ -23,7 +23,7 @@ Or use next command if you are very lazy
 ```
 kubectl exec -it `kubectl get pods | grep ops | awk '{print $1}'` -- bash
 ```
-Now you are inside the container. Copy all files from `/usr/share/nginx/html/` to mounted persistance disks.
+5. Now you are inside the container. Copy all files from `/usr/share/nginx/html/` to mounted persistance disks.
 ```
 cp /usr/share/nginx/html/* nginx-blue/
 cp /usr/share/nginx/html/* nginx-green/
@@ -38,7 +38,7 @@ Double check files exist and content is correct `Welcome to blue nginx!` is in t
 cat /nginx-blue/index.html
 cat /nginx-green/index.html
 ```
-If everything is ok then close the connection
+6. If everything is ok then close the connection
 ```
 exit
 ```
