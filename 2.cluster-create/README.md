@@ -7,7 +7,7 @@ In the output you can find `defaultClusterVersion`, `defaultImageType`. If you a
 
 ```
 gcloud container clusters create "k8s-cluster" --zone "europe-west1-d" \
-   --machine-type "custom-1-1024" --disk-size "100" --network "default" \ 
+   --machine-type "custom-1-1024" --disk-size "100" --network "default" \
    --no-enable-cloud-logging --no-enable-cloud-monitoring \
    --enable-autoscaling --min-nodes="2" --max-nodes="10" \
    --enable-legacy-authorization
@@ -17,7 +17,7 @@ Also, you can deploy Kubernetes Nodes using other images available in `validImag
 Use next example if you want to set `--cluster-version` and `--image-type`:
 ```
 gcloud container clusters create "k8s-cluster" --zone "europe-west1-d" \
-   --machine-type "custom-1-1024" --disk-size "100" --network "default" \ 
+   --machine-type "custom-1-1024" --disk-size "100" --network "default" \
    --no-enable-cloud-logging --no-enable-cloud-monitoring \
    --enable-autoscaling --min-nodes="2" --max-nodes="10" \
    --enable-legacy-authorization \
