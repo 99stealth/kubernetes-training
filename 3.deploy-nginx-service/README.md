@@ -40,5 +40,4 @@ kubectl delete -f nginx-service.yml
 Or you can delete everything together
 ```
 kubectl delete -f nginx.yml,nginx-service.yml
-
 ```
