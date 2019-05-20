@@ -11,7 +11,7 @@ kubectl create -f ops.yaml
 ```
 kubectl get deployments
 ```
-    And check pod is created
+  And check pod is created
 ```
 kubectl get pods
 ```
@@ -19,7 +19,7 @@ kubectl get pods
 ```
 kubectl exec -it ops-xxxxxxxxxx-xxxxx -- bash
 ```
-    Or use next command if you are very lazy
+  Or use next command if you are very lazy
 ```
 kubectl exec -it `kubectl get pods | grep ops | awk '{print $1}'` -- bash
 ```
@@ -28,12 +28,12 @@ kubectl exec -it `kubectl get pods | grep ops | awk '{print $1}'` -- bash
 cp /usr/share/nginx/html/* nginx-blue/
 cp /usr/share/nginx/html/* nginx-green/
 ```
-    Change `index.html` files content using `sed`
+  Change `index.html` files content using `sed`
 ```
 sed -i -e 's/Welcome to nginx!/Welcome to blue nginx!/g' nginx-blue/index.html
 sed -i -e 's/Welcome to nginx!/Welcome to green nginx!/g' nginx-green/index.html
 ```
-    Double check files exist and content is correct `Welcome to blue nginx!` is in the `nginx-blue/index.html` and `Welcome to green nginx!` is in the `Welcome to green nginx!`
+  Double check files exist and content is correct `Welcome to blue nginx!` is in the `nginx-blue/index.html` and `Welcome to green nginx!` is in the `Welcome to green nginx!`
 ```
 cat /nginx-blue/index.html
 cat /nginx-green/index.html
@@ -42,7 +42,7 @@ cat /nginx-green/index.html
 ```
 exit
 ```
-    And delete the `ops` deployment
+  And delete the `ops` deployment
 ```
 kubectl delete -f ops.yaml
 ```
