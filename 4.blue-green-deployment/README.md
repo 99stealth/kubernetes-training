@@ -30,8 +30,8 @@ cp /usr/share/nginx/html/* nginx-green/
 ```
   Change `index.html` files content using `sed`
 ```
-sed -i -e 's/Welcome to nginx!/Welcome to blue nginx!/g' nginx-blue/index.html
-sed -i -e 's/Welcome to nginx!/Welcome to green nginx!/g' nginx-green/index.html
+sed -i -e 's/<h1>Welcome to nginx!<\/h1>/<h1 style="color:blue;">Welcome to nginx!<\/h1>/g' nginx-blue/index.html
+sed -i -e 's/<h1>Welcome to nginx!<\/h1>/<h1 style="color:green;">Welcome to nginx!<\/h1>/g' nginx-green/index.html
 ```
   Double check files exist and content is correct `Welcome to blue nginx!` is in the `nginx-blue/index.html` and `Welcome to green nginx!` is in the `Welcome to green nginx!`
 ```
@@ -45,4 +45,26 @@ exit
   And delete the `ops` deployment
 ```
 kubectl delete -f ops.yaml
+```
+or you can use this command
+```
+kubectl delete deployment ops
+```
+Let's check that pod and deployment were deleted
+```
+kubectl get deployments,pods
+```
+---
+7. Create a k8s service
+```
+kubectl create -f service.yaml
+```
+check it was created
+```
+kubectl get svc webserver
+```
+8. Create couple deployments from `green.yaml` and `blue.yaml`
+```
+kubectl create -f blue.yaml
+kubectl create -f green.yaml
 ```
